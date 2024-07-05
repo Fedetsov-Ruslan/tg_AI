@@ -3,7 +3,8 @@ import asyncio
 
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
-from app.headlers import router
+from app.handlers.user_private import user_private_router
+from app.handlers.group_chat import user_group_router
 
 
 async def main():
@@ -11,7 +12,8 @@ async def main():
 
     bot = Bot(token=os.getenv("TG_TOKEN"))
     dp = Dispatcher()
-    dp.include_router(router)
+    dp.include_router(user_private_router)
+    dp.include_router(user_group_router)
     await dp.start_polling(bot)
 
 
