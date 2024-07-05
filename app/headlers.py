@@ -24,8 +24,9 @@ async def generate_error(message: Message):
 @router.message(F.text)
 async def text(message: Message, state: FSMContext):
     await state.set_state(Generate.text)
-    response = await gpt4( message.text)
-    await message.answer(response.choise[0].message.content)
+    response = await gpt4(message.text)
+    await message.answer(response.choices[0].message.content)
+    await state.clear()
 
 
 

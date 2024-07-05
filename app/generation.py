@@ -14,6 +14,6 @@ async def gpt4(questions):
         messages=[
             {"role": "user",
              "content": str(questions)}],
-        model="gpt-3.5"
+        model="gpt-4o"
     )
     return response
